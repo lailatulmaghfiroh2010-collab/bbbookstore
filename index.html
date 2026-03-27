@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bibbidi Bobbidi Books ✦ Preloved Books</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-icon">📚</div>
+      <p class="loader-text">Menyiapkan buku-buku ajaib...</p>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+  </div>
+
+  <header id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">
+        <span class="nav-logo-icon">✦</span>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Bibbidi Bobbidi Books</span>
+          <span class="nav-logo-sub">Preloved · Ori · Terjamin</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="#katalog">Katalog</a>
+        <a href="#cara-order">Cara Order</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+      <button class="nav-wa-btn" onclick="openWhatsApp('Halo admin, saya mau tanya-tanya dulu 😊')">
+        <span>💬</span> Chat Admin
+      </button>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#katalog" onclick="toggleMobileMenu()">Katalog</a>
+      <a href="#cara-order" onclick="toggleMobileMenu()">Cara Order</a>
+      <a href="#tentang" onclick="toggleMobileMenu()">Tentang</a>
+      <a href="#kontak" onclick="toggleMobileMenu()">Kontak</a>
+      <button class="mobile-wa-btn" onclick="openWhatsApp('Halo admin, saya mau tanya-tanya dulu 😊')">💬 Chat Admin</button>
+    </div>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-badge">✦ Buku Preloved Berkualitas</span>
+      <h1 class="hero-title">
+        Temukan <em>Cerita Baru</em><br>dari Buku Lama
+      </h1>
+      <p class="hero-sub">
+        Setiap buku punya jiwa — dan di sini, jiwa-jiwa itu menunggu pemilik barunya.
+        Semua ori, terawat, dan siap menemanimu.
+      </p>
+      <div class="hero-actions">
+        <a href="#katalog" class="btn-primary">Lihat Katalog</a>
+        <a href="#cara-order" class="btn-ghost">Cara Order</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>50+</strong><span>Judul Buku</span></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><strong>100%</strong><span>Original</span></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><strong>Fast</strong><span>Response</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="filter-section" id="katalog">
+    <div class="filter-inner">
+      <div class="filter-header">
+        <div>
+          <p class="section-label">✦ Koleksi Kami</p>
+          <h2 class="section-title">Katalog Buku</h2>
+        </div>
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Cari judul atau penulis..."
+            oninput="searchBook()"
+          />
+        </div>
+      </div>
+      <div class="filter-tabs" id="filterTabs">
+        <button class="ftab active" onclick="filterCategory('semua', this)">Semua</button>
+        <button class="ftab" onclick="filterCategory('pengembangan-diri', this)">Pengembangan Diri</button>
+        <button class="ftab" onclick="filterCategory('sains', this)">Sains & Akademik</button>
+        <button class="ftab" onclick="filterCategory('roman', this)">Roman</button>
+        <button class="ftab" onclick="filterCategory('fiksi', this)">Fiksi & Sastra</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCT GRID ===== -->
+  <main class="products-section">
+    <div class="products-grid" id="productsGrid">
+      <!-- cards injected by JS -->
+    </div>
+    <div class="empty-state hidden" id="emptyState">
+      <div class="empty-icon">📭</div>
+      <p>Buku yang kamu cari tidak ditemukan.</p>
+    </div>
+  </main>
+
+  <section class="cara-order-section" id="cara-order">
+    <div class="section-inner">
+      <p class="section-label" style="text-align:center">✦ Panduan</p>
+      <h2 class="section-title" style="text-align:center">Cara Order</h2>
+      <p class="section-desc" style="text-align:center">Gampang banget, cuma 4 langkah aja!</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon">📖</div>
+          <h3>Pilih Buku</h3>
+          <p>Browse katalog dan klik tombol <strong>Order</strong> pada buku yang kamu inginkan.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon">💬</div>
+          <h3>Chat via WhatsApp</h3>
+          <p>Kamu akan langsung terhubung ke WhatsApp admin dengan detail buku sudah terisi otomatis.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon">💳</div>
+          <h3>Lakukan Pembayaran</h3>
+          <p>Admin akan kasih info rekening/QRIS. Bayar, lalu kirim bukti ke WhatsApp yang sama.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-icon">📦</div>
+          <h3>Buku Dikirim</h3>
+          <p>Setelah pembayaran dikonfirmasi, buku langsung dikemas dan dikirim ke alamatmu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tentang-section" id="tentang">
+    <div class="section-inner tentang-inner">
+      <div class="tentang-text">
+        <p class="section-label">✦ Tentang Kami</p>
+        <h2 class="section-title">Bibbidi Bobbidi Books</h2>
+        <p class="tentang-desc">
+          Kami adalah toko buku preloved yang percaya bahwa sebuah buku yang sudah dibaca
+          masih punya banyak cerita yang bisa diberikan. Semua buku yang kami jual adalah
+          original, sudah kami seleksi kondisinya, dan dijual dengan harga yang lebih ramah
+          di kantong mahasiswa.
+        </p>
+        <p class="tentang-desc">
+          Mulai dari novel romansa, fiksi sastra, buku sains, hingga buku pengembangan diri —
+          semuanya bisa kamu temukan di sini. Kalau ada judul yang kamu cari tapi belum ada,
+          jangan ragu buat tanya ke admin ya! 🙂
+        </p>
+        <div class="tentang-tags">
+          <span class="tag">📚 Pre-loved</span>
+          <span class="tag">✅ Original</span>
+          <span class="tag">💌 Fast Response</span>
+          <span class="tag">🚚 Kirim ke Seluruh Indonesia</span>
+        </div>
+      </div>
+      <div class="tentang-visual">
+        <div class="tentang-card">
+          <div class="tc-number">50+</div>
+          <div class="tc-label">Judul Tersedia</div>
+        </div>
+        <div class="tentang-card">
+          <div class="tc-number">100%</div>
+          <div class="tc-label">Buku Original</div>
+        </div>
+        <div class="tentang-card">
+          <div class="tc-number">⚡</div>
+          <div class="tc-label">Fast Response</div>
+        </div>
+        <div class="tentang-card">
+          <div class="tc-number">🇮🇩</div>
+          <div class="tc-label">Seluruh Indonesia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kontak-section" id="kontak">
+    <div class="section-inner" style="text-align:center">
+      <p class="section-label">✦ Hubungi Kami</p>
+      <h2 class="section-title">Ada Pertanyaan?</h2>
+      <p class="section-desc">
+        Jangan ragu buat chat langsung. Admin aktif setiap hari dan fast response!
+      </p>
+      <button class="kontak-wa-btn" onclick="openWhatsApp('Halo admin Bibbidi Bobbidi Books, saya mau tanya-tanya 😊')">
+        <span class="wa-icon">💬</span>
+        Chat Admin via WhatsApp
+      </button>
+      <div class="kontak-info">
+        <div class="kontak-item">📱 62895369410157</div>
+        <div class="kontak-item">📸 @bibbidibobbidibooks</div>
+        <div class="kontak-item">🕐 Aktif setiap hari, 08.00 – 22.00</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span>✦</span> Bibbidi Bobbidi Books
+      </div>
+      <p class="footer-tagline"><em>"Setiap buku adalah teman baru yang menunggu."</em></p>
+      <p class="footer-copy">© 2026 Bibbidi Bobbidi Books - Haqi Developer · All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="descModal" onclick="closeDescModal(event)">
+    <div class="modal-box" id="descModalBox">
+      <button class="modal-close-btn" onclick="closeDescModalDirect()">✕</button>
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="" />
+      </div>
+      <div class="modal-content">
+        <span class="modal-category" id="modalCategory"></span>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <p class="modal-author" id="modalAuthor"></p>
+        <p class="modal-price" id="modalPrice"></p>
+        <p class="modal-condition" id="modalCondition"></p>
+        <div class="modal-desc-text" id="modalDesc"></div>
+        <div class="modal-actions">
+          <button class="modal-order-btn" id="modalOrderBtn">
+            🛒 Order via WhatsApp
+          </button>
+          <button class="modal-close-btn-secondary" onclick="closeDescModalDirect()">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="orderModal" onclick="closeOrderModal(event)">
+    <div class="order-modal-wrapper" id="orderModalBox">
+
+      <button class="om-close-btn" onclick="closeOrderModalDirect()" title="Tutup">✕</button>
+
+      <div class="om-steps">
+        <div class="om-step active" id="ostep1">
+          <div class="om-step-circle"><span>1</span></div>
+          <div class="om-step-label">Data Diri</div>
+        </div>
+        <div class="om-step-track" id="oline1"></div>
+        <div class="om-step" id="ostep2">
+          <div class="om-step-circle"><span>2</span></div>
+          <div class="om-step-label">Pembayaran</div>
+        </div>
+        <div class="om-step-track" id="oline2"></div>
+        <div class="om-step" id="ostep3">
+          <div class="om-step-circle"><span>3</span></div>
+          <div class="om-step-label">Konfirmasi</div>
+        </div>
+      </div>
+
+      <div id="oStep1" class="om-step-content">
+        <div class="om-header">
+          <div class="om-header-icon">📦</div>
+          <div>
+            <h3 class="om-title">Detail Pemesanan</h3>
+            <p class="om-subtitle">Lengkapi data dirimu untuk pengiriman</p>
+          </div>
+        </div>
+
+        <div class="om-book-chip" id="orderBookPreview"></div>
+
+        <div class="om-form">
+          <div class="om-form-row">
+            <div class="om-field">
+              <label>Nama Lengkap <span class="req">*</span></label>
+              <input type="text" id="oName" placeholder="Nama lengkap kamu" oninput="clearOInvalid(this)" />
+            </div>
+            <div class="om-field">
+              <label>Nomor WhatsApp <span class="req">*</span></label>
+              <input type="tel" id="oPhone" placeholder="08xx-xxxx-xxxx" oninput="clearOInvalid(this)" />
+            </div>
+          </div>
+          <div class="om-field">
+            <label>Alamat Pengiriman <span class="req">*</span></label>
+            <textarea id="oAddress" rows="3" placeholder="Jl., No. rumah, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos..." oninput="clearOInvalid(this)"></textarea>
+          </div>
+          <div class="om-field">
+            <label>Catatan <span class="om-optional">(opsional)</span></label>
+            <input type="text" id="oNotes" placeholder="Pesan untuk admin, kondisi khusus, dll..." />
+          </div>
+        </div>
+
+        <div class="om-footer">
+          <button class="om-btn-ghost" onclick="closeOrderModalDirect()">✕ Batal</button>
+          <button class="om-btn-primary" onclick="goOrderStep2()">Pilih Pembayaran →</button>
+        </div>
+      </div>
+
+      <div id="oStep2" class="om-step-content hidden">
+        <div class="om-header">
+          <div class="om-header-icon">💳</div>
+          <div>
+            <h3 class="om-title">Metode Pembayaran</h3>
+            <p class="om-subtitle">Pilih cara pembayaran yang kamu mau</p>
+          </div>
+        </div>
+
+        <div class="om-pay-tabs">
+          <button class="om-pay-tab active" id="tabTransfer" onclick="selectPay(this,'transfer')">
+            <span class="opt-icon">🏦</span>
+            <span class="opt-label">Transfer Bank</span>
+          </button>
+          <button class="om-pay-tab" id="tabQris" onclick="selectPay(this,'qris')">
+            <span class="opt-icon">📷</span>
+            <span class="opt-label">QRIS</span>
+          </button>
+          <button class="om-pay-tab" id="tabCod" onclick="selectPay(this,'cod')">
+            <span class="opt-icon">🛵</span>
+            <span class="opt-label">COD</span>
+          </button>
+        </div>
+
+        <div id="panelTransfer" class="om-pay-panel">
+          <p class="om-panel-label">🏦 Rekening Tujuan — a.n. <strong>Bibbidi Bobbidi Books</strong></p>
+          <div class="om-bank-list">
+            <div class="om-bank-row">
+              <div class="om-bank-logo bca">BCA</div>
+              <div class="om-bank-detail">
+                <span class="om-bank-num">1234 5678 90</span>
+              </div>
+              <button class="om-copy-btn" onclick="copyText('1234567890','BCA')">📋 Salin</button>
+            </div>
+            <div class="om-bank-row">
+              <div class="om-bank-logo mandiri">Mandiri</div>
+              <div class="om-bank-detail">
+                <span class="om-bank-num">1100 0012 3456</span>
+              </div>
+              <button class="om-copy-btn" onclick="copyText('110000123456','Mandiri')">📋 Salin</button>
+            </div>
+            <div class="om-bank-row">
+              <div class="om-bank-logo bni">BNI</div>
+              <div class="om-bank-detail">
+                <span class="om-bank-num">0987 6543 21</span>
+              </div>
+              <button class="om-copy-btn" onclick="copyText('098765432','BNI')">📋 Salin</button>
+            </div>
+            <div class="om-bank-row">
+              <div class="om-bank-logo bri">BRI</div>
+              <div class="om-bank-detail">
+                <span class="om-bank-num">0011 0100 1234</span>
+              </div>
+              <button class="om-copy-btn" onclick="copyText('00110100123','BRI')">📋 Salin</button>
+            </div>
+          </div>
+          <div class="om-info-banner">
+            💡 Setelah transfer, kirim <strong>bukti pembayaran</strong> ke WhatsApp admin ya!
+          </div>
+        </div>
+
+        <div id="panelQris" class="om-pay-panel hidden">
+          <div class="om-qris-wrap">
+            <div class="om-qris-left">
+              <div class="om-qris-frame">
+                <div class="om-qris-header">
+                  <span class="om-qris-brand">QRIS</span>
+                  <span class="om-qris-sub">Bibbidi Bobbidi Books</span>
+                </div>
+                <div class="om-qris-img-area">
+                  <img
+                    id="qrisImg"
+                    src=""
+                    alt="QRIS"
+                    onerror="this.style.display='none'; document.getElementById('qrisFallback').style.display='flex';"
+                  />
+                  <div id="qrisFallback" class="om-qris-fallback">
+                    <div class="qr-grid" id="qrGrid"></div>
+                  </div>
+                </div>
+                <div class="om-qris-footer-tag">Scan untuk bayar</div>
+              </div>
+            </div>
+            <div class="om-qris-right">
+              <p class="om-qris-title">Cara Bayar QRIS</p>
+              <ol class="om-qris-steps">
+                <li>Buka aplikasi dompet digitalmu</li>
+                <li>Pilih menu <strong>Scan QR</strong> atau <strong>QRIS</strong></li>
+                <li>Arahkan kamera ke QR di samping</li>
+                <li>Masukkan nominal & konfirmasi bayar</li>
+                <li>Screenshot bukti pembayaran</li>
+                <li>Kirim bukti ke WhatsApp admin</li>
+              </ol>
+              <div class="om-qris-apps">
+                <span>GoPay</span><span>OVO</span><span>Dana</span>
+                <span>ShopeePay</span><span>LinkAja</span>
+              </div>
+              <p class="om-qris-note">
+                ⚠️ Ganti <code>src=""</code> pada <code>img#qrisImg</code> dengan file QR QRIS toko untuk produksi
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL: COD -->
+        <div id="panelCod" class="om-pay-panel hidden">
+          <p class="om-panel-label">🛵 Detail Pengiriman COD</p>
+          <div class="om-form">
+            <div class="om-field">
+              <label>Alamat Lengkap COD <span class="req">*</span></label>
+              <textarea id="oCodAddress" rows="3"
+                placeholder="Jl. nama jalan, No. rumah, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos..."
+                oninput="clearOInvalid(this)"></textarea>
+            </div>
+            <div class="om-field">
+              <label>Pilih Ekspedisi <span class="req">*</span></label>
+              <select id="oCodEkspedisi" oninput="clearOInvalid(this)">
+                <option value="">— Pilih ekspedisi —</option>
+                <option value="JNE">🟠 JNE</option>
+                <option value="J&T Express">🔴 J&T Express</option>
+                <option value="SiCepat">🟡 SiCepat</option>
+                <option value="Anteraja">🟢 Anteraja</option>
+                <option value="Ninja Xpress">🟣 Ninja Xpress</option>
+                <option value="Pos Indonesia">🔵 Pos Indonesia</option>
+                <option value="Shopee Express">🟠 Shopee Express</option>
+                <option value="Lainnya">⚪ Lainnya (tanya admin)</option>
+              </select>
+            </div>
+            <div class="om-field">
+              <label>Catatan COD <span class="om-optional">(opsional)</span></label>
+              <input type="text" id="oCodNotes" placeholder="Cth: rumah cat kuning, depan minimarket..." />
+            </div>
+          </div>
+          <div class="om-info-banner om-info-warning">
+            🛵 Admin akan mengonfirmasi ketersediaan COD di areamu sebelum pesanan diproses.
+          </div>
+        </div>
+
+        <div class="om-mini-summary">
+          <span>📚 <span id="oSumBook">–</span></span>
+          <span>💰 <span id="oSumPrice">–</span></span>
+          <span class="om-pay-badge" id="oSumPay">Transfer Bank</span>
+        </div>
+
+        <div class="om-footer">
+          <button class="om-btn-ghost" onclick="goOrderStep1()">← Kembali</button>
+          <button class="om-btn-primary" onclick="goOrderStep3()">Lanjut Konfirmasi →</button>
+        </div>
+      </div>
+
+      <div id="oStep3" class="om-step-content hidden">
+        <div class="om-header">
+          <div class="om-header-icon">✅</div>
+          <div>
+            <h3 class="om-title">Konfirmasi Pesanan</h3>
+            <p class="om-subtitle">Cek sekali lagi sebelum dikirim ke admin</p>
+          </div>
+        </div>
+
+        <div class="om-confirm-grid">
+          <!-- Kiri: ringkasan harga -->
+          <div class="om-confirm-left">
+            <p class="om-confirm-section-label">📋 Ringkasan</p>
+            <div class="om-confirm-summary" id="confirmSummary"></div>
+          </div>
+          <!-- Kanan: detail lengkap -->
+          <div class="om-confirm-right">
+            <p class="om-confirm-section-label">👤 Detail Pembeli</p>
+            <div class="om-confirm-detail" id="confirmDetail"></div>
+          </div>
+        </div>
+
+        <div class="om-confirm-note">
+          <span class="om-note-icon">💬</span>
+          <span>Klik <strong>"Kirim ke WhatsApp"</strong> — semua detail di atas akan terisi otomatis. Admin fast response! 😊</span>
+        </div>
+
+        <div class="om-footer">
+          <button class="om-btn-ghost" onclick="goOrderStep2()">← Kembali</button>
+          <button class="om-btn-wa" onclick="sendToWhatsApp()">
+            💬 Kirim ke WhatsApp Admin
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="toast-wrap" id="toastWrap"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
